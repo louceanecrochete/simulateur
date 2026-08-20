@@ -1,0 +1,836 @@
+{
+ "planche": "/__l5e/assets-v1/8e74ef13-a7fd-4ac8-b2c6-a40bf8724039/planche_planche_louceanecrochete_fixed_2.png",
+ "categories": [
+  {
+   "id": "ronde",
+   "nom": "Perles rondes",
+   "ordre": 1,
+   "prix_regle": "",
+   "rotatable": false
+  },
+  {
+   "id": "lettre_blanche",
+   "nom": "Lettres",
+   "ordre": 2,
+   "prix_regle": "",
+   "rotatable": false
+  },
+  {
+   "id": "nacre",
+   "nom": "Nacré",
+   "ordre": 3,
+   "prix_regle": "",
+   "rotatable": false
+  },
+  {
+   "id": "new_1771968509856",
+   "nom": "Tressé (entre les lettres)",
+   "ordre": 4,
+   "prix_regle": "",
+   "rotatable": false
+  },
+  {
+   "id": "animaux",
+   "nom": "Animaux",
+   "ordre": 5,
+   "prix_regle": "motif",
+   "rotatable": true
+  },
+  {
+   "id": "papillion",
+   "nom": "Papillons",
+   "ordre": 6,
+   "prix_regle": "motif",
+   "rotatable": true
+  },
+  {
+   "id": "lotus",
+   "nom": "Fleurs de lotus",
+   "ordre": 7,
+   "prix_regle": "motif",
+   "rotatable": true
+  }
+ ],
+ "perles": [
+  {
+   "nom": "Beige",
+   "image_url": "/__l5e/assets-v1/800c900d-a64e-4f66-983c-41d8f0388d81/perle_ronde_1_2_2.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Blanc",
+   "image_url": "/__l5e/assets-v1/b7feb192-d4af-416f-ab4e-7464fc04033a/perle_ronde_1_2_3.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Bleu",
+   "image_url": "/__l5e/assets-v1/195bf48a-41f4-4c65-aaef-38f0f37ec38e/perle_ronde_1_2_5.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Bleu",
+   "image_url": "/__l5e/assets-v1/7c6c8008-a041-4f75-ba68-1b985fd1bfe3/perle_ronde_1_2_6.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Bleu",
+   "image_url": "/__l5e/assets-v1/851815b9-1a4b-499b-8411-bb124d0b6c98/perle_ronde_1_2_7.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Bleu",
+   "image_url": "/__l5e/assets-v1/9ebabf62-b10d-42bb-b0da-1a0a336af617/perle_ronde_1_2_8.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Bleu",
+   "image_url": "/__l5e/assets-v1/b9c6855e-6261-4d7a-8f5d-3f76174a1ed4/perle_ronde_1_2_9.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Jaune",
+   "image_url": "/__l5e/assets-v1/374e22e1-75d5-4de5-96d3-a97782744584/perle_ronde_1_2.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Jaune",
+   "image_url": "/__l5e/assets-v1/92580898-9b54-4be7-b93b-7f6aedd9f144/perle_ronde_1_2_1.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Jaune",
+   "image_url": "/__l5e/assets-v1/0ddfd050-ec69-4e45-96f9-474a39a35c32/perle_ronde_1_2_2.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Marron",
+   "image_url": "/__l5e/assets-v1/e23f2c62-4137-4eb9-8a39-e6a584ab440f/perle_ronde_1_2_1.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Nacrée",
+   "image_url": "/__l5e/assets-v1/f3599300-e33f-4072-aeca-e9b1ff69aa90/perle_ronde_1000015817.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Noir",
+   "image_url": "/__l5e/assets-v1/dbbf7696-90fc-42a1-b130-6f5e6015acc2/perle_ronde_1_2.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Orange",
+   "image_url": "/__l5e/assets-v1/bb9eaeeb-adbd-42f0-8f53-8b85b62a54f1/perle_ronde_1000015824.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Rose",
+   "image_url": "/__l5e/assets-v1/558595d2-4c8e-49d6-a8e4-82e18646d807/perle_ronde_1000015825.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Rose",
+   "image_url": "/__l5e/assets-v1/d90963b9-4208-4edf-9ec5-956f71ae723a/perle_ronde_1000015826.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Rose",
+   "image_url": "/__l5e/assets-v1/9eac3f85-d224-47ad-ae34-ca2f0388cb84/perle_ronde_1000015827.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Rouge",
+   "image_url": "/__l5e/assets-v1/0224c711-8e57-4856-b50a-a276fdddcdbc/perle_ronde_1000015821.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Vert",
+   "image_url": "/__l5e/assets-v1/dde59c81-049e-4ad0-bf11-a54451dec7b3/perle_ronde_1_2_2.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Vert",
+   "image_url": "/__l5e/assets-v1/d9340e30-8db1-4d55-aadc-c31186451d75/perle_ronde_1000015823.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Violet",
+   "image_url": "/__l5e/assets-v1/98b52d36-8ea4-4236-b0ab-c71c2b75d02b/perle_ronde_1000015818.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Violet",
+   "image_url": "/__l5e/assets-v1/24e6e6bc-67e3-4f16-9a66-38538f07267a/perle_ronde_1000015819.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "Violet",
+   "image_url": "/__l5e/assets-v1/2fc0a8e2-891a-4043-bd00-c63d21021a76/perle_ronde_1000015820.png",
+   "taille_cm": 1.2,
+   "categorie": "ronde"
+  },
+  {
+   "nom": "A",
+   "image_url": "/__l5e/assets-v1/389536f8-23b2-4147-8e6d-c96a82a35a40/perle_lettre_blanche_perle.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "B",
+   "image_url": "/__l5e/assets-v1/9ba174b1-f518-4b37-b0e7-6e06fc7520b0/perle_lettre_blanche_perle_1.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "C",
+   "image_url": "/__l5e/assets-v1/8da40a52-ce6b-45fa-b25d-8f4d6a021a34/perle_lettre_blanche_perle_2.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "D",
+   "image_url": "/__l5e/assets-v1/0e924c0e-9196-49d9-b8e8-8b05a1731280/perle_lettre_blanche_perle_3.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "E",
+   "image_url": "/__l5e/assets-v1/90d410eb-956d-45c8-b8d0-90bd8a0c3a8d/perle_lettre_blanche_perle_4.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "F",
+   "image_url": "/__l5e/assets-v1/1d1662d3-af9a-4a30-9a08-47591e63562c/perle_lettre_blanche_perle_5.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "G",
+   "image_url": "/__l5e/assets-v1/0cd85660-dce2-4788-a5f4-c643769b3317/perle_lettre_blanche_perle_6.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "H",
+   "image_url": "/__l5e/assets-v1/5ad1cbea-26d3-4981-bc01-299d6c4def7d/perle_lettre_blanche_perle_7.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "I",
+   "image_url": "/__l5e/assets-v1/33b3973e-37c3-493b-a383-11ea876d493f/perle_lettre_blanche_perle_8.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "J",
+   "image_url": "/__l5e/assets-v1/2389a1bb-31ce-4101-8cca-b2e88a69b79b/perle_lettre_blanche_perle_9.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "K",
+   "image_url": "/__l5e/assets-v1/c8d2f218-6a07-4fda-9a31-edfcef5ed328/perle_lettre_blanche_perle_10.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "L",
+   "image_url": "/__l5e/assets-v1/f682bbe4-b927-43d6-aef5-bcf1a325ff14/perle_lettre_blanche_perle_11.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "M",
+   "image_url": "/__l5e/assets-v1/35993ca7-825f-4377-afeb-b14e8f8e43aa/perle_lettre_blanche_perle_12.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "N",
+   "image_url": "/__l5e/assets-v1/4df07805-1ad8-4044-b575-fded17711bf1/perle_lettre_blanche_perle_13.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "O",
+   "image_url": "/__l5e/assets-v1/701c2baf-abd1-42e0-a23a-0f3d63f1fa58/perle_lettre_blanche_perle_14.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "P",
+   "image_url": "/__l5e/assets-v1/305e4c19-cd1f-433e-b4ad-3244088eb6b3/perle_lettre_blanche_perle_15.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "Q",
+   "image_url": "/__l5e/assets-v1/e64e47de-b063-44fb-8b5f-619e5d7e2194/perle_lettre_blanche_perle_16.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "R",
+   "image_url": "/__l5e/assets-v1/466a02c9-2e81-407c-9114-cfc3fd7315ac/perle_lettre_blanche_perle_17.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "S",
+   "image_url": "/__l5e/assets-v1/4d5fb63a-920d-4c3b-98d5-8ca2c997b4c6/perle_lettre_blanche_perle_18.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "T",
+   "image_url": "/__l5e/assets-v1/a9978900-41ee-4906-8bcd-8019bcfb023f/perle_lettre_blanche_perle_19.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "U",
+   "image_url": "/__l5e/assets-v1/277b80bd-5d98-4659-9353-58e04ed795aa/perle_lettre_blanche_perle_20.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "V",
+   "image_url": "/__l5e/assets-v1/292e9432-8847-4ee8-8ed6-cd2f5a715465/perle_lettre_blanche_perle_21.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "W",
+   "image_url": "/__l5e/assets-v1/d121bdcb-664a-470c-9fc1-d26cbd06468e/perle_lettre_blanche_perle_22.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "X",
+   "image_url": "/__l5e/assets-v1/95d99433-e45b-4786-abb6-0c322c39d16d/perle_lettre_blanche_perle_23.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "Y",
+   "image_url": "/__l5e/assets-v1/9a71a973-7a8e-44cf-a352-046873f79836/perle_lettre_blanche_perle_24.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "Z",
+   "image_url": "/__l5e/assets-v1/6065f5aa-d533-4c20-a429-ad6ce46eb4a7/perle_lettre_blanche_perle_25.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "Ë",
+   "image_url": "/__l5e/assets-v1/886c53b6-2988-4fdb-97a2-3195496ef21e/perle_lettre_blanche_perle_26.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "Ê",
+   "image_url": "/__l5e/assets-v1/2892f580-22e2-409b-979c-c8df2fd64260/perle_lettre_blanche_perle_27.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "Ï",
+   "image_url": "/__l5e/assets-v1/917a59ca-e726-4fbc-8236-d785f502e90d/perle_lettre_blanche_perle_28.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "Ä",
+   "image_url": "/__l5e/assets-v1/7023546b-a81d-4537-a8b5-758ed5dd922d/perle_lettre_blanche_perle_29.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "É",
+   "image_url": "/__l5e/assets-v1/96dde358-6303-4458-a646-2112f0ed7a3e/perle_lettre_blanche_perle_30.png",
+   "taille_cm": 1.2,
+   "categorie": "lettre_blanche"
+  },
+  {
+   "nom": "Nacrée",
+   "image_url": "/__l5e/assets-v1/6e2ccedc-801f-4d0c-8696-6ec3b5189b77/perle_nacre_1_2.png",
+   "taille_cm": 1.2,
+   "categorie": "nacre"
+  },
+  {
+   "nom": "Blanc",
+   "image_url": "/__l5e/assets-v1/da60366c-0c10-4e7f-8d35-8518ba074b3d/perle_tresse_seulement_entre_les_lettres_blanc.png",
+   "taille_cm": 1.2,
+   "categorie": "new_1771968509856"
+  },
+  {
+   "nom": "Bleu turquoise",
+   "image_url": "/__l5e/assets-v1/838bfc45-60a6-4398-a46e-478447e9a2f9/perle_tresse_seulement_entre_les_lettres_bleu_turquoise.png",
+   "taille_cm": 1.2,
+   "categorie": "new_1771968509856"
+  },
+  {
+   "nom": "Orange",
+   "image_url": "/__l5e/assets-v1/76396dce-e454-47c0-8cd9-0428326b41d6/perle_tresse_seulement_entre_les_lettres_orange.png",
+   "taille_cm": 1.2,
+   "categorie": "new_1771968509856"
+  },
+  {
+   "nom": "Vert d eau",
+   "image_url": "/__l5e/assets-v1/4adf95dc-207f-4a35-b2b6-98c7d63b017b/perle_tresse_seulement_entre_les_lettres_vert_d_eau.png",
+   "taille_cm": 1.2,
+   "categorie": "new_1771968509856"
+  },
+  {
+   "nom": "Violet fonc",
+   "image_url": "/__l5e/assets-v1/00f9b023-cf46-45cc-a8d0-1ce2f9f9f9f4/perle_tresse_seulement_entre_les_lettres_violet_fonc.png",
+   "taille_cm": 1.2,
+   "categorie": "new_1771968509856"
+  },
+  {
+   "nom": "Beige",
+   "image_url": "/__l5e/assets-v1/3e52eb92-2ac6-4d6d-aac7-6797cc3b5f7d/perle_tresse_seulement_entre_les_lettres_beige.png",
+   "taille_cm": 1.2,
+   "categorie": "new_1771968509856"
+  },
+  {
+   "nom": "Bleu fonc",
+   "image_url": "/__l5e/assets-v1/d9a91928-88a8-4737-88a7-19d72117c40d/perle_tresse_seulement_entre_les_lettres_bleu_fonc.png",
+   "taille_cm": 1.2,
+   "categorie": "new_1771968509856"
+  },
+  {
+   "nom": "Jaune",
+   "image_url": "/__l5e/assets-v1/281f75d5-03b9-419c-a593-2c5051cb04cf/perle_tresse_seulement_entre_les_lettres_jaune.png",
+   "taille_cm": 1.2,
+   "categorie": "new_1771968509856"
+  },
+  {
+   "nom": "Maron",
+   "image_url": "/__l5e/assets-v1/bbc99a25-cf0e-4f13-8b35-ca07b43674c9/perle_tresse_seulement_entre_les_lettres_maron.png",
+   "taille_cm": 1.2,
+   "categorie": "new_1771968509856"
+  },
+  {
+   "nom": "Rose",
+   "image_url": "/__l5e/assets-v1/0f819fc0-3030-47f3-8f8c-5c7812b6ab5c/perle_tresse_seulement_entre_les_lettres_rose.png",
+   "taille_cm": 1.2,
+   "categorie": "new_1771968509856"
+  },
+  {
+   "nom": "Rouge",
+   "image_url": "/__l5e/assets-v1/4baadf00-8cfd-45c9-83e8-f0c6a9d9b297/perle_tresse_seulement_entre_les_lettres_rouge.png",
+   "taille_cm": 1.2,
+   "categorie": "new_1771968509856"
+  },
+  {
+   "nom": "Koala beige",
+   "image_url": "/__l5e/assets-v1/902e28da-aca6-4daf-959d-8732ebb1f95c/perle_animaux_koala_beige.png",
+   "taille_cm": 1.5,
+   "categorie": "animaux"
+  },
+  {
+   "nom": "Koala violet",
+   "image_url": "/__l5e/assets-v1/ade1a4bb-464d-4d1a-82b4-58e970337e2c/perle_animaux_koala_violet.png",
+   "taille_cm": 1.5,
+   "categorie": "animaux"
+  },
+  {
+   "nom": "Panda bleu",
+   "image_url": "/__l5e/assets-v1/b46faa1b-9c0c-4e7d-a2a5-99ce3cd4ffad/perle_animaux_panda_bleu.png",
+   "taille_cm": 1.5,
+   "categorie": "animaux"
+  },
+  {
+   "nom": "Panda rose",
+   "image_url": "/__l5e/assets-v1/c9fced92-c95e-41d6-a3fc-a48a22280887/perle_animaux_panda_rose.png",
+   "taille_cm": 1.5,
+   "categorie": "animaux"
+  },
+  {
+   "nom": "Panda vert",
+   "image_url": "/__l5e/assets-v1/dfe200e2-c8e6-4f2d-8420-0d9be18205a0/perle_animaux_panda_vert.png",
+   "taille_cm": 1.5,
+   "categorie": "animaux"
+  },
+  {
+   "nom": "Papillon",
+   "image_url": "/__l5e/assets-v1/81edb0df-1478-412d-a0d5-2868832a0964/perle_papillion_perle_12.png",
+   "taille_cm": 1.5,
+   "categorie": "papillion"
+  },
+  {
+   "nom": "Papillon",
+   "image_url": "/__l5e/assets-v1/81b6f376-de8e-466e-815f-88d558c06cfd/perle_papillion_perle_13.png",
+   "taille_cm": 1.5,
+   "categorie": "papillion"
+  },
+  {
+   "nom": "Papillon",
+   "image_url": "/__l5e/assets-v1/1059bdce-7ca6-4264-9b2c-616755fc7ba3/perle_papillion_perle_14.png",
+   "taille_cm": 1.5,
+   "categorie": "papillion"
+  },
+  {
+   "nom": "Papillon",
+   "image_url": "/__l5e/assets-v1/aff0d260-0c8d-4685-b3f2-ad0cd97c6ebd/perle_papillion_perle_15.png",
+   "taille_cm": 1.5,
+   "categorie": "papillion"
+  },
+  {
+   "nom": "Papillon",
+   "image_url": "/__l5e/assets-v1/dcb042f2-07c1-4bca-8cf3-692b49fcbf01/perle_papillion_perle_16.png",
+   "taille_cm": 1.5,
+   "categorie": "papillion"
+  },
+  {
+   "nom": "Papillon",
+   "image_url": "/__l5e/assets-v1/fd7b852a-6036-4f74-b5c4-3c6c854199fb/perle_papillion_perle_17.png",
+   "taille_cm": 1.5,
+   "categorie": "papillion"
+  },
+  {
+   "nom": "Papillon",
+   "image_url": "/__l5e/assets-v1/5eddcb81-d28a-4348-a1ee-8e72a8ea9457/perle_papillion_perle_18.png",
+   "taille_cm": 1.5,
+   "categorie": "papillion"
+  },
+  {
+   "nom": "Papillon",
+   "image_url": "/__l5e/assets-v1/09807d00-1733-434b-9785-005cf9ed9c45/perle_papillion_perle_19.png",
+   "taille_cm": 1.5,
+   "categorie": "papillion"
+  },
+  {
+   "nom": "Papillon",
+   "image_url": "/__l5e/assets-v1/b4dea63d-f7f6-43ba-a7c5-9dc5fb805ef5/perle_papillion_perle_20.png",
+   "taille_cm": 1.5,
+   "categorie": "papillion"
+  },
+  {
+   "nom": "Fleur de lotus",
+   "image_url": "/__l5e/assets-v1/16325b2c-7687-457b-89c6-5c48c5a1955a/perle_lotus_fleur.png",
+   "taille_cm": 1.5,
+   "categorie": "lotus"
+  },
+  {
+   "nom": "Fleur de lotus",
+   "image_url": "/__l5e/assets-v1/0acedaf7-4e40-4e34-9894-88658435d131/perle_lotus_fleur_1.png",
+   "taille_cm": 1.5,
+   "categorie": "lotus"
+  },
+  {
+   "nom": "Fleur de lotus",
+   "image_url": "/__l5e/assets-v1/a42aa121-b8e0-4059-a0d0-ecbc996c8cfb/perle_lotus_fleur_de_lotus.png",
+   "taille_cm": 1.5,
+   "categorie": "lotus"
+  },
+  {
+   "nom": "Fleur de lotus",
+   "image_url": "/__l5e/assets-v1/02791c77-b188-465a-ad30-2772dc855c48/perle_lotus_fleur_de_lotus_1.png",
+   "taille_cm": 1.5,
+   "categorie": "lotus"
+  },
+  {
+   "nom": "Fleur de lotus",
+   "image_url": "/__l5e/assets-v1/093be49d-e631-4e89-a913-c40e38441b07/perle_lotus_fleur_de_lotus_2.png",
+   "taille_cm": 1.5,
+   "categorie": "lotus"
+  },
+  {
+   "nom": "Fleur de lotus",
+   "image_url": "/__l5e/assets-v1/683ec98d-f162-4029-b461-176b10a33370/perle_lotus_fleur_de_lotus_3.png",
+   "taille_cm": 1.5,
+   "categorie": "lotus"
+  },
+  {
+   "nom": "Fleur de lotus",
+   "image_url": "/__l5e/assets-v1/1c824b2e-ea17-40c3-8ea3-9c33ec8d9b76/perle_lotus_fleur_de_lotus_4.png",
+   "taille_cm": 1.5,
+   "categorie": "lotus"
+  },
+  {
+   "nom": "Fleur de lotus",
+   "image_url": "/__l5e/assets-v1/ab1ec4a8-447d-42df-a451-aa57dab8302b/perle_lotus_fleur_de_lotus_5.png",
+   "taille_cm": 1.5,
+   "categorie": "lotus"
+  },
+  {
+   "nom": "Fleur de lotus",
+   "image_url": "/__l5e/assets-v1/b60939b0-46b7-4b03-9e05-67853f67159b/perle_lotus_perle.png",
+   "taille_cm": 1.5,
+   "categorie": "lotus"
+  },
+  {
+   "nom": "Fleur de lotus",
+   "image_url": "/__l5e/assets-v1/78f8c553-36bf-47aa-bc21-0c43c4e6e857/perle_lotus_perle_1.png",
+   "taille_cm": 1.5,
+   "categorie": "lotus"
+  },
+  {
+   "nom": "Fleur de lotus",
+   "image_url": "/__l5e/assets-v1/059ec253-fd23-4889-9992-1a810285a23a/perle_lotus_perle_2.png",
+   "taille_cm": 1.5,
+   "categorie": "lotus"
+  },
+  {
+   "nom": "Fleur de lotus",
+   "image_url": "/__l5e/assets-v1/fce05390-45fa-471d-9cba-87c9d21798e2/perle_lotus_perle_3.png",
+   "taille_cm": 1.5,
+   "categorie": "lotus"
+  },
+  {
+   "nom": "Fleur de lotus",
+   "image_url": "/__l5e/assets-v1/7f3d12b8-15c3-4196-860e-23fdf87024ee/perle_lotus_perle_4.png",
+   "taille_cm": 1.5,
+   "categorie": "lotus"
+  },
+  {
+   "nom": "Fleur de lotus",
+   "image_url": "/__l5e/assets-v1/499222ae-85c8-40c8-9e6b-bc68146c3bf2/perle_lotus_perle_5.png",
+   "taille_cm": 1.5,
+   "categorie": "lotus"
+  },
+  {
+   "nom": "Fleur de lotus",
+   "image_url": "/__l5e/assets-v1/cfdebd66-b073-4331-b226-177dd2a58743/perle_lotus_perle_6.png",
+   "taille_cm": 1.5,
+   "categorie": "lotus"
+  },
+  {
+   "nom": "Fleur de lotus",
+   "image_url": "/__l5e/assets-v1/67a97f94-679f-410b-be95-0112cdb03596/perle_lotus_perle_7.png",
+   "taille_cm": 1.5,
+   "categorie": "lotus"
+  },
+  {
+   "nom": "Fleur de lotus",
+   "image_url": "/__l5e/assets-v1/93a34f89-7433-4220-a29e-2de2b6d3565a/perle_lotus_perle_8.png",
+   "taille_cm": 1.5,
+   "categorie": "lotus"
+  },
+  {
+   "nom": "Fleur de lotus",
+   "image_url": "/__l5e/assets-v1/3d34dec2-4668-468f-a97d-8e91fab3d4de/perle_lotus_perle_9.png",
+   "taille_cm": 1.5,
+   "categorie": "lotus"
+  }
+ ],
+ "clips": [
+  {
+   "nom": "Clio fushia",
+   "image_url": "/__l5e/assets-v1/2b7f71a1-af72-45bc-911e-07e882e8f40b/clip_clio_fushia.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clio gris",
+   "image_url": "/__l5e/assets-v1/db80dac9-1177-451c-8495-ea64ddd672f0/clip_clio_gris.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clio gris fonc e",
+   "image_url": "/__l5e/assets-v1/c5b6df3e-15ec-4eca-9253-71560224c879/clip_clio_gris_fonc_e.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clio vert d eau",
+   "image_url": "/__l5e/assets-v1/c399b7a8-33ab-496a-bbc7-72fa4829d197/clip_clio_vert_d_eau.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip",
+   "image_url": "/__l5e/assets-v1/dedc9a9d-ce64-44ee-9447-0f90aad185a4/clip_clip.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip 1",
+   "image_url": "/__l5e/assets-v1/2efd255e-5178-46db-a42c-1b66e7957b11/clip_clip_1.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip 2",
+   "image_url": "/__l5e/assets-v1/61bccb34-7a25-4bc7-988d-43e574ea0e48/clip_clip_2.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip 3",
+   "image_url": "/__l5e/assets-v1/bb860f25-63f1-423c-822f-ca3aba92e10b/clip_clip_3.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip 4",
+   "image_url": "/__l5e/assets-v1/181faf5b-0da1-459b-8e2e-c6671fbd8289/clip_clip_4.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip 5",
+   "image_url": "/__l5e/assets-v1/1b30e8cb-5f0b-41ca-b1a9-f1536585c520/clip_clip_5.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip 6",
+   "image_url": "/__l5e/assets-v1/0e7f6ac2-36ff-4ad7-a128-db117ca34f5f/clip_clip_6.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip 7",
+   "image_url": "/__l5e/assets-v1/f788c9d7-a729-4a40-91bf-705b4795effb/clip_clip_7.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip 8",
+   "image_url": "/__l5e/assets-v1/4a218651-d4cb-4397-a0ea-ad74fc3a73ae/clip_clip_8.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip 9",
+   "image_url": "/__l5e/assets-v1/f6c7c804-d96d-4963-8885-42c6e5beebcc/clip_clip_9.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip 10",
+   "image_url": "/__l5e/assets-v1/b3ebe44a-e55d-4517-a15c-87715d7fd9e7/clip_clip_10.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip 11",
+   "image_url": "/__l5e/assets-v1/c4d67789-d9f0-4f23-bb50-a322470b42d6/clip_clip_11.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip 12",
+   "image_url": "/__l5e/assets-v1/33efbc3a-197d-4158-b84f-c12e571bfd83/clip_clip_12.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip 13",
+   "image_url": "/__l5e/assets-v1/0c0dcb31-c333-4dd6-8eb6-b978fd858e66/clip_clip_13.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip 14",
+   "image_url": "/__l5e/assets-v1/57e98010-e538-4d22-8d28-46df42a00c4c/clip_clip_14.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip 15",
+   "image_url": "/__l5e/assets-v1/1d4a46b6-956f-4335-bf12-891438e19ff3/clip_clip_15.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip 16",
+   "image_url": "/__l5e/assets-v1/5c64522e-07b1-4cf6-8ae8-0788d777fc0f/clip_clip_16.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip 17",
+   "image_url": "/__l5e/assets-v1/60eee966-9b5e-4e31-b436-d17c5e12d4b7/clip_clip_17.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip 18",
+   "image_url": "/__l5e/assets-v1/458d8787-e17b-47a4-a622-445b765f4935/clip_clip_18.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip 19",
+   "image_url": "/__l5e/assets-v1/ecafca13-f9f7-44aa-8a73-8773078189ae/clip_clip_19.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip 20",
+   "image_url": "/__l5e/assets-v1/7b0fe010-8681-43bd-8e7a-76077ec13d0b/clip_clip_20.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  },
+  {
+   "nom": "Clip orange",
+   "image_url": "/__l5e/assets-v1/8ce22e1f-58a3-44e2-8a07-4d5f9305f8b3/clip_clip_orange.png",
+   "prix": 0,
+   "type": "attache",
+   "subcat": "attache_std"
+  }
+ ],
+ "clip_subcategories": [
+  {
+   "id": "attache_std",
+   "nom": "Clips attache-tétine",
+   "type": "attache",
+   "ordre": 1
+  }
+ ]
+}

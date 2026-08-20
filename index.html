@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Configurateur Attache-doudou</title>
+<style>
+* { box-sizing: border-box; }
+html { height: 100dvh; width: 100vw; overflow: hidden; overscroll-behavior: none; }
+body {
+    margin: 0; padding: 0; font-family: 'Arial', sans-serif;
+    height: 100dvh; width: 100vw;
+    background: #a67b5b;
+    overflow: hidden; position: fixed; top: 0; left: 0; color: #333;
+}
+
+/* ---- Menu ---- */
+.menu {
+    width: 250px;
+    background: linear-gradient(to bottom, #f3e5d8 0%, #e7d2bc 100%);
+    padding: 20px 15px;
+    overflow-y: auto;
+    float: left;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    padding-bottom: 240px;
+    scroll-padding-bottom: 240px;
+    scroll-behavior: smooth;
+}
+.menu > *:last-child { margin-bottom: 20px; }
+
+.zone { margin-left: 250px; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative; }
+.panneau-indicateur {
+    position: fixed; bottom: 0; left: 0; width: 250px; padding: 15px;
+    background: #fdf5ed; border-top: 2px solid #a67b5b;
+    text-align: center; font-weight: bold; font-size: 15px; color: #5d4037;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 100;
+}
+.support { position: relative; width: 55vw; max-width: 650px; min-width: 400px; overflow: visible !important; }
+
+.menu h3 {
+    cursor: pointer; margin: 12px 0; padding: 8px 0; font-size: 16px;
+    font-weight: bold; color: #5d4037; transition: color 0.2s;
+    user-select: none; display: flex; align-items: center;
+}
+.menu h3:hover { color: #8d4e47; }
+.submenu { display: none; margin: 8px 0 20px 12px; flex-wrap: wrap; gap: 8px; }
+.submenu img { cursor: pointer; display: block; width: auto; height: auto; transition: transform 0.2s; border-radius: 4px; }
+.submenu img:hover { transform: scale(1.05); }
+.submenu .img-container { position: relative; display: inline-block; }
+.submenu .img-container.tressee { border: 1.5px solid #a67b5b; border-radius: 6px; padding: 3px; background: rgba(166,123,91,0.06); display: inline-flex; flex-direction: column; align-items: center; justify-content: center; }
+.perle-nom { display: block; font-size: 10px; text-align: center; color: #5d4037; margin-top: 2px; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.support img#img-support { width: 100%; height: auto; display: block; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+.cadre-perles {
+    position: absolute; transform: translate(-50%, -50%);
+    border-left: 2px solid #8d6e63; border-right: 2px solid #8d6e63;
+    overflow: visible !important; z-index: 2; border-radius: 2px;
+}
+
+.cat-price { font-size: 1.3em; font-weight: 900; color: #8d6e63; margin-left: 10px; }
+
+/* ---- Perles ---- */
+.perle { position: absolute; cursor: move; display: flex; justify-content: center; align-items: center; transform-origin: center center; transition: left 0.2s ease; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); overflow: visible; }
+.delete-btn, .rotate-btn { position: absolute; width: 18px; height: 18px; color: white; border-radius: 50%; text-align: center; line-height: 18px; font-size: 12px; cursor: pointer; box-shadow: 0 0 4px rgba(0,0,0,0.6); z-index: 10000; font-weight: bold; transition: transform 0.2s; left: 50%; transform: translateX(-50%); }
+.delete-btn { background: linear-gradient(135deg, #a1665e, #8d4e47); top: -22px; }
+.rotate-btn { background: linear-gradient(135deg, #4cafef, #2196f3); bottom: -22px; top: auto; }
+.delete-btn:hover, .rotate-btn:hover { transform: translateX(-50%) scale(1.2); }
+
+.status-message { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.85); color: white; padding: 10px 20px; border-radius: 8px; z-index: 10000; display: none; font-weight: bold; }
+
+.panneau-indicateur button {
+    margin-top: 10px; width: 100%; padding: 10px;
+    background: linear-gradient(135deg, #a67b5b, #8d6e63);
+    color: white; border: none; border-radius: 6px; cursor: pointer;
+    font-weight: bold; transition: all 0.2s; font-size: 14px;
+}
+.panneau-indicateur button:hover { background: linear-gradient(135deg, #8d6e63, #6d4c41); transform: translateY(-1px); }
+.panneau-indicateur button.btn-download { background: linear-gradient(135deg, #4caf50, #2e7d32); }
+.panneau-indicateur button.btn-download:hover { background: linear-gradient(135deg, #388e3c, #1b5e20); }
+
+/* ---- Clip fixe ---- */
+.clip-fixe {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    z-index: 1; pointer-events: none;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3)); display: block;
+}
+
+/* ---- Bouton changer clip gauche ---- */
+.change-clip-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: linear-gradient(135deg, #a67b5b, #8d6e63);
+    color: white; border: none; border-radius: 50%;
+    width: 36px; height: 36px; font-size: 20px; line-height: 36px;
+    text-align: center; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 5000; pointer-events: auto;
+}
+.change-clip-btn:hover { background: linear-gradient(135deg, #8d6e63, #6d4c41); transform: translateY(-50%) scale(1.1); }
+
+/* ---- Bouton ajouter clip droit ---- */
+#add-right-clip-btn {
+    position: absolute; top: 50%; left: 100%; transform: translateY(-50%);
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, #a67b5b, #8d6e63);
+    color: white; font-weight: bold; font-size: 24px; line-height: 36px;
+    text-align: center; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    user-select: none; z-index: 9999; transition: transform 0.15s ease;
+    pointer-events: auto;
+}
+#add-right-clip-btn:hover { transform: translateY(-50%) scale(1.1); }
+
+/* ---- Bouton supprimer clip droit ---- */
+.delete-right-clip-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: linear-gradient(135deg, #a1665e, #8d4e47);
+    color: white; border: none; border-radius: 50%;
+    width: 28px; height: 28px; font-size: 14px; line-height: 28px;
+    text-align: center; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 5000; pointer-events: auto;
+}
+.delete-right-clip-btn:hover { transform: translateY(-50%) scale(1.1); }
+
+/* ---- POPUP CLIPS ---- */
+#popup-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5); display: flex; justify-content: center;
+    align-items: center; z-index: 20000; backdrop-filter: blur(4px);
+}
+#popup {
+    background: #fff; border-radius: 20px;
+    width: 60vw; height: 70vh; max-width: 90vw; max-height: 90vh;
+    overflow-y: auto; text-align: left;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    border: 2px solid #d4b896;
+    display: flex; flex-direction: column;
+    padding: 0;
+}
+#popup-header {
+    padding: 20px 24px 12px;
+    border-bottom: 1px solid #eee;
+    flex-shrink: 0;
+    position: sticky; top: 0; background: #fff; z-index: 1; border-radius: 20px 20px 0 0;
+}
+#popup-header h2 { margin: 0; font-size: 20px; font-weight: bold; color: #5d4037; }
+#popup-body { flex: 1; overflow-y: auto; padding: 12px 16px 20px; }
+
+/* Accordéon clips */
+.clip-accordion { margin-bottom: 8px; border-radius: 10px; overflow: hidden; border: 1px solid #e5ddd5; }
+.clip-accordion-header {
+    background: linear-gradient(135deg, #a67b5b, #8d6e63);
+    color: white; padding: 10px 16px;
+    cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+    user-select: none; font-weight: bold; font-size: 15px; transition: filter 0.15s;
+}
+.clip-accordion-header:hover { filter: brightness(1.08); }
+.clip-accordion-header .chevron { transition: transform 0.2s; font-size: 12px; }
+.clip-accordion-header.open .chevron { transform: rotate(180deg); }
+.clip-accordion-body { display: none; padding: 14px; background: #fdf5ed; }
+.clip-accordion-body.open { display: block; }
+.clip-grid { display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-start; }
+.clip-option { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: transform 0.15s; }
+.clip-option:hover { transform: scale(1.06); }
+.clip-option img { width: 90px; height: 90px; object-fit: contain; border-radius: 10px; border: 2px solid transparent; transition: border-color 0.15s; }
+.clip-option:hover img { border-color: #a67b5b; }
+.clip-menu-price { font-size: 13px; color: #8d6e63; font-weight: 900; margin-top: 4px; min-height: 18px; }
+
+/* Loader */
+#loader-api { text-align: center; padding: 20px; color: #5d4037; font-weight: bold; }
+#loader-clips { text-align: center; padding: 30px; color: #5d4037; }
+
+.disclaimer-text {
+    position: absolute; top: -40px; left: 50%; transform: translateX(-50%);
+    font-size: 0.9em; color: #8d6e63; font-weight: bold; white-space: nowrap;
+    background: rgba(255,255,255,0.4); padding: 4px 10px; border-radius: 12px;
+}
+.menu::-webkit-scrollbar { width: 6px; }
+.menu::-webkit-scrollbar-thumb { background: #a67b5b; border-radius: 3px; }
+
+/* ---- MOBILE ---- */
+@media (max-width: 768px) {
+  .menu { width: 100%; height: auto; float: none; position: fixed; bottom: 0; left: 0; right: 0; top: auto; padding: 12px; z-index: 1000; max-height: 40vh; overflow-y: auto; overflow-x: auto; white-space: nowrap; display: block; padding-bottom: 20px; scroll-padding-bottom: 20px; }
+  .menu > div { display: inline-block; min-width: 100%; vertical-align: top; }
+  .zone { margin-left: 0; padding: 10px; padding-top: 120px; height: 55dvh; align-items: center; justify-content: center; overflow: visible; }
+  .panneau-indicateur { position: fixed; top: 0; bottom: auto; left: 0; width: 100%; padding: 10px; z-index: 1001; display: flex; flex-direction: row; flex-wrap: wrap; gap: 6px; min-height: auto; background: #fdf5ed; border-top: none; border-bottom: 3px solid #a67b5b; }
+  .panneau-indicateur #prix-indicateur { width: 100%; text-align: center; font-size: 14px; }
+  .panneau-indicateur button { margin-top: 0; flex: 1; min-width: 45%; padding: 8px; font-size: 13px; }
+  .support { width: 82vw; max-width: 82vw; min-width: 240px; margin: 0 auto; }
+  .perle { border-radius: 0 !important; }
+  .perle img { border-radius: 0 !important; }
+  .submenu { display: flex !important; flex-direction: row; gap: 12px; margin: 6px 0 12px 0; padding: 0; overflow-x: auto; overflow-y: hidden; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+  .submenu .img-container { display: inline-block; flex: 0 0 auto; }
+  .submenu img { transform: none; object-fit: contain; background: transparent !important; padding: 0 !important; border-radius: 0 !important; }
+  .menu h3 { font-size: 14px; margin: 6px 0; padding: 4px 0; display: inline-block; margin-right: 12px; }
+  .disclaimer-text { top: auto; bottom: -22px; }
+  #popup { width: 95vw; height: 80vh; }
+  .clip-option img { width: 70px; height: 70px; }
+  #mobile-perles-bar { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="menu">
+  <div id="loader-api">Chargement...</div>
+  <div id="menu-content"></div>
+  <div id="mobile-perles-bar"></div>
+</div>
+
+<div class="zone">
+  <div class="support" id="support">
+    <div class="disclaimer-text">images non contractuelle</div>
+    <img src="/__l5e/assets-v1/8e74ef13-a7fd-4ac8-b2c6-a40bf8724039/planche_planche_louceanecrochete_fixed_2.png" alt="Support" id="img-support" loading="eager" decoding="sync" fetchpriority="high" referrerpolicy="no-referrer">
+    <div class="cadre-perles" id="cadre-perles">
+      <div id="add-right-clip-btn" title="Ajouter clip droit">+</div>
+    </div>
+  </div>
+</div>
+
+<div class="panneau-indicateur">
+  <div id="prix-indicateur">Supplément : +0€</div>
+  <button onclick="resetPerles()">Réinitialiser</button>
+  <button id="btn-payer">Ajouter au panier</button>
+  <button class="btn-download" onclick="telechargerImage()">Télécharger</button>
+</div>
+
+<div class="status-message" id="status-message"></div>
+
+<!-- POPUP CLIPS -->
+<div id="popup-overlay" style="display:none;">
+  <div id="popup">
+    <div id="popup-header">
+      <h2>🪢 Choisissez un clip</h2>
+    </div>
+    <div id="popup-body">
+      <div id="loader-clips">Chargement des clips...</div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+<script>
+const API_URL = "/simulateur/catalogue.json";
+
+const cadre = document.getElementById("cadre-perles");
+const imgSupport = document.getElementById("img-support");
+const statusMessage = document.getElementById("status-message");
+const prixIndicateur = document.getElementById("prix-indicateur");
+
+const largeurFentePxBase = 452;
+const hauteurFentePxBase = 40;
+const facteurLargeur = 0.49;
+const largeurFenteReelleCm = 17;
+
+const CAT_TRESSEE_ID = "new_1771968509856";
+
+let catsPremium = [];
+let catsMotifs = [];
+let perlesInfo = [];
+let clipElement = null;
+let clipTailleCm = 5;
+const clipOffsetCm = 5;
+let currentLeftClipPrice = 0;
+let currentRightClipPrice = 0;
+
+/* ===== API ===== */
+async function chargerDonneesAPI() {
+    try {
+        const res = await fetch(API_URL);
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+        if (!data.categories || !data.perles) throw new Error("Format invalide");
+
+        if (data.planche) imgSupport.src = data.planche;
+        genererMenuHTML(data);
+        genererPopupClipsHTML(data.clips || [], data.clip_subcategories || null);
+
+        document.getElementById('loader-api').style.display = 'none';
+
+        if (!clipElement) {
+            const popup = document.getElementById("popup-overlay");
+            popup.dataset.clipSide = 'left';
+            popup.style.display = "flex";
+        }
+        ajusterCadre();
+    } catch (e) {
+        console.error("Erreur API:", e);
+        document.getElementById('loader-api').innerHTML =
+            `Erreur chargement.<br><button onclick="chargerDonneesAPI()" style="margin-top:8px;padding:4px 12px;cursor:pointer;">Réessayer</button>`;
+    }
+}
+
+/* ===== MENU PERLES ===== */
+function genererMenuHTML(data) {
+    const container = document.getElementById('menu-content');
+    container.innerHTML = "";
+    catsPremium = []; catsMotifs = [];
+
+    const cats = [...data.categories].sort((a, b) => (a.ordre || 0) - (b.ordre || 0));
+
+    cats.forEach(cat => {
+        if (cat.prix_regle === 'premium' || cat.prix_regle === 'fixe_2.5') catsPremium.push(cat.id);
+        if (cat.prix_regle === 'motif') catsMotifs.push(cat.id);
+
+        let prixTexte = catsPremium.includes(cat.id) ? "+2.5€"
+            : catsMotifs.includes(cat.id) ? "(1ère 0€, 2ème 1€)" : "";
+
+        const h3 = document.createElement('h3');
+        h3.innerHTML = `${cat.nom}${prixTexte ? ` <span class="cat-price">${prixTexte}</span>` : ''}`;
+        h3.dataset.catId = cat.id;
+        h3.onclick = () => toggleMenu(cat.id);
+        container.appendChild(h3);
+
+        const submenu = document.createElement('div');
+        submenu.id = cat.id;
+        submenu.className = "submenu";
+        submenu.dataset.rotatable = cat.rotatable ? "true" : "false";
+
+        const prixBase = catsPremium.includes(cat.id) ? 2.5 : 0;
+        data.perles.filter(p => p.categorie === cat.id).forEach(p => {
+            const div = document.createElement('div');
+            div.className = "img-container";
+            const isTressee = cat.id === CAT_TRESSEE_ID;
+            if (isTressee) div.classList.add('tressee');
+            div.onclick = function() { ajouterPerle(p.image_url, parseFloat(p.taille_cm), prixBase, this); };
+            const img = document.createElement('img');
+            img.src = p.image_url; img.alt = p.nom || "Perle";
+            img.dataset.taille = p.taille_cm; img.dataset.cat = cat.id; img.dataset.nom = (p.nom || "").toLowerCase();
+            div.appendChild(img);
+            if (isTressee && p.nom) { const nom = document.createElement('span'); nom.className = 'perle-nom'; nom.textContent = p.nom; div.appendChild(nom); }
+            submenu.appendChild(div);
+        });
+        container.appendChild(submenu);
+    });
+}
+
+/* ===== POPUP CLIPS ===== */
+function genererPopupClipsHTML(clips, subcats) {
+    const body = document.getElementById('popup-body');
+    body.innerHTML = '';
+
+    const clipsAttache = (clips || []).filter(c => (c.type || 'attache') === 'attache');
+
+    if (clipsAttache.length === 0) {
+        body.innerHTML = '<p style="text-align:center;color:#999;padding:20px;">Aucun clip disponible.</p>';
+        return;
+    }
+
+    const scsDuType = subcats
+        ? subcats.filter(s => s.type === 'attache').sort((a,b) => (a.ordre||0)-(b.ordre||0))
+        : [];
+
+    if (scsDuType.length > 1) {
+        scsDuType.forEach(sc => {
+            const clipsScss = clipsAttache.filter(c => c.subcat === sc.id);
+            if (clipsScss.length === 0) return;
+
+            const acc = document.createElement('div');
+            acc.className = 'clip-accordion';
+
+            const header = document.createElement('div');
+            header.className = 'clip-accordion-header';
+            header.innerHTML = `<span>${sc.nom}</span><span class="chevron">▼</span>`;
+            header.onclick = function() {
+                const o = this.classList.contains('open');
+                this.classList.toggle('open', !o);
+                this.nextElementSibling.classList.toggle('open', !o);
+            };
+
+            const bodyAcc = document.createElement('div');
+            bodyAcc.className = 'clip-accordion-body';
+
+            const grid = document.createElement('div');
+            grid.className = 'clip-grid';
+            clipsScss.forEach(clip => grid.appendChild(creerOptionClip(clip)));
+
+            bodyAcc.appendChild(grid);
+            acc.appendChild(header);
+            acc.appendChild(bodyAcc);
+            body.appendChild(acc);
+        });
+    } else {
+        const grid = document.createElement('div');
+        grid.className = 'clip-grid';
+        clipsAttache.forEach(clip => grid.appendChild(creerOptionClip(clip)));
+        body.appendChild(grid);
+    }
+}
+
+function creerOptionClip(clip) {
+    const opt = document.createElement('div');
+    opt.className = 'clip-option';
+    const p = parseFloat(clip.prix);
+    opt.innerHTML = `
+        <img src="${clip.image_url}" alt="${clip.nom || 'Clip'}">
+        <div class="clip-menu-price">${p > 0 ? '+' + p + '€' : ''}</div>
+    `;
+    opt.querySelector('img').onclick = function() { ajouterClip(clip.image_url, p); };
+    return opt;
+}
+
+/* ===== UTILS ===== */
+document.addEventListener('wheel', e => { if (e.ctrlKey) e.preventDefault(); }, { passive: false });
+document.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && ['+','-','='].includes(e.key)) e.preventDefault(); });
+
+function showStatus(msg, dur = 2000) {
+    statusMessage.textContent = msg; statusMessage.style.display = 'block';
+    setTimeout(() => statusMessage.style.display = 'none', dur);
+}
+function toggleMenu(id) {
+    if (window.innerWidth <= 768) return;
+    const m = document.getElementById(id); if (!m) return;
+    m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
+}
+function largeurPerlePx(cm) {
+    const cw = cadre.offsetWidth || largeurFentePxBase * facteurLargeur;
+    return cm * (cw / largeurFenteReelleCm);
+}
+function hauteurPerlePx(cm) { return largeurPerlePx(cm); }
+function majIndicateur() {
+    let t = perlesInfo.reduce((a, p) => a + (p.prixBonus || 0), 0) + currentLeftClipPrice + currentRightClipPrice;
+    t = Math.round(t * 100) / 100;
+    prixIndicateur.textContent = `Supplément : +${Number.isInteger(t) ? t : t.toFixed(2).replace('.', ',')}€`;
+}
+function recalculerPrixSpeciaux() {
+    perlesInfo.filter(p => catsMotifs.includes(p.categoryId)).forEach((p, i) => { p.prixBonus = i === 0 ? 0 : 1; });
+    majIndicateur();
+}
+
+/* ===== HELPERS FORMAT PERLE ===== */
+function isPlate(info) {
+    return (info.nom || "").toLowerCase() === "plate" || info.categoryId === 'perle-plate';
+}
+function isTressee(info) {
+    return info.categoryId === 'tressé' || info.categoryId === CAT_TRESSEE_ID;
+}
+function getDimensions(info) {
+    const w = largeurPerlePx(info.tailleCm);
+    let h = hauteurPerlePx(info.tailleCm);
+    let vw = w;
+    if (isPlate(info)) {
+        h = w * 2;
+    } else if (isTressee(info)) {
+        h = w * 4; vw = w * 2;
+    }
+    return { w, h, vw };
+}
+
+/* ===== PERLES ===== */
+function ajouterPerle(src, tailleCm, prixBonus, element) {
+    if (imgSupport.naturalWidth === 0) { showStatus("Attendez le chargement"); return; }
+    const parentSubmenu = element?.closest('.submenu');
+    const categoryId = parentSubmenu?.id || 'default';
+
+    const isSpecial = catsPremium.includes(categoryId) || catsMotifs.includes(categoryId);
+    if (isSpecial) {
+        const count = perlesInfo.filter(p => catsPremium.includes(p.categoryId) || catsMotifs.includes(p.categoryId)).length;
+        if (count >= 2) { showStatus("Maximum 2 perles spéciales !"); return; }
+    }
+    const largTotal = perlesInfo.reduce((a, p) => a + p.tailleCm, 0);
+    if (largTotal + tailleCm > largeurFenteReelleCm) { showStatus("Espace insuffisant"); return; }
+
+    const rotatable = parentSubmenu?.dataset.rotatable === "true";
+    const nomPerle = element?.querySelector('img')?.alt || "Perle";
+    const finalPrice = catsMotifs.includes(categoryId) ? 0 : prixBonus;
+
+    const info = { src, tailleCm, prixBonus: finalPrice, nom: nomPerle, categoryId, rotatable, miroir: false, positionX: 0 };
+    perlesInfo.push(info);
+    creerPerle(info);
+    recalculerPrixSpeciaux();
+    repositionnerPerles();
+}
+
+function appliquerStyleImage(img, w, h, vw, miroir) {
+    img.style.position = "absolute";
+    img.style.width = vw + "px";
+    img.style.height = "100%";
+    img.style.left = "50%";
+    img.style.top = "50%";
+    let transform = "translateX(-50%) translateY(-50%)";
+    if (miroir) transform += " scaleX(-1)";
+    img.style.transform = transform;
+}
+
+function creerPerle(info) {
+    const perle = document.createElement("div"); perle.className = "perle";
+    const img = document.createElement("img"); img.src = info.src; img.draggable = false;
+    perle.appendChild(img); cadre.appendChild(perle);
+
+    const { w, h, vw } = getDimensions(info);
+    perle.style.width = w + "px"; perle.style.height = h + "px";
+    perle.style.top = ((cadre.offsetHeight - h) / 2) + "px";
+    appliquerStyleImage(img, w, h, vw, info.miroir);
+
+    const btn = document.createElement("div"); btn.className = "delete-btn"; btn.innerHTML = "×";
+    const del = e => { e.stopPropagation(); e.preventDefault(); perle.remove(); perlesInfo = perlesInfo.filter(p => p !== info); recalculerPrixSpeciaux(); repositionnerPerles(); };
+    btn.addEventListener('touchend', del); btn.onclick = del; perle.appendChild(btn);
+
+    if (info.rotatable) {
+        const rot = document.createElement("div"); rot.className = "rotate-btn"; rot.innerHTML = "↔";
+        const flip = e => {
+            e.stopPropagation(); e.preventDefault();
+            info.miroir = !info.miroir;
+            const { w: cw, h: ch, vw: cvw } = getDimensions(info);
+            appliquerStyleImage(perle.querySelector('img'), cw, ch, cvw, info.miroir);
+        };
+        rot.addEventListener('touchend', flip); rot.onclick = flip; perle.appendChild(rot);
+    }
+    info.domElement = perle;
+    rendreDeplacable(perle, info);
+}
+
+function repositionnerPerles() {
+    let x = 0;
+    perlesInfo.forEach(info => { const w = largeurPerlePx(info.tailleCm); info.positionX = x; info.domElement.style.left = x + "px"; x += w; });
+}
+
+function rendreDeplacable(el, info) {
+    interact(el).draggable({
+        inertia: true,
+        modifiers: [interact.modifiers.restrictRect({ restriction: 'parent', endOnly: false })],
+        autoScroll: true,
+        listeners: {
+            start() { info.isDragging = true; info.originalIndex = perlesInfo.indexOf(info); el.style.zIndex = 9999; el.style.transition = 'none'; el.setAttribute('data-x', parseFloat(el.style.left || 0)); info.currentSnapIndex = info.originalIndex; },
+            move(event) {
+                let x = (parseFloat(el.getAttribute('data-x')) || 0) + event.dx;
+                const w = el.offsetWidth, cw = cadre.offsetWidth;
+                x = Math.max(0, Math.min(x, cw - w));
+                el.style.left = x + 'px'; el.setAttribute('data-x', x);
+                const centerX = x + w / 2;
+                const others = perlesInfo.filter(p => p !== info);
+                let newIndex = 0, cum = 0;
+                others.forEach((p, i) => { const ow = largeurPerlePx(p.tailleCm); if (centerX > cum + ow / 2 + w * 0.6) newIndex++; cum += ow; });
+                if (newIndex !== info.currentSnapIndex) {
+                    info.currentSnapIndex = newIndex;
+                    const before = others.slice(0, newIndex), after = others.slice(newIndex);
+                    let cur = 0;
+                    before.forEach(p => { p.domElement.style.transition = 'left 0.2s ease'; p.domElement.style.left = cur + 'px'; cur += largeurPerlePx(p.tailleCm); });
+                    cur += w;
+                    after.forEach(p => { p.domElement.style.transition = 'left 0.2s ease'; p.domElement.style.left = cur + 'px'; cur += largeurPerlePx(p.tailleCm); });
+                }
+            },
+            end() { info.isDragging = false; el.style.zIndex = ''; el.style.transition = 'left 0.2s ease'; if (typeof info.currentSnapIndex === 'number' && info.currentSnapIndex !== info.originalIndex) { perlesInfo = perlesInfo.filter(p => p !== info); perlesInfo.splice(info.currentSnapIndex, 0, info); } recalculerPrixSpeciaux(); repositionnerPerles(); }
+        }
+    });
+}
+
+/* ===== CLIPS ===== */
+function upsertButtons(hasLeft, hasRight) {
+    let changeBtn = cadre.querySelector('.change-clip-btn');
+    if (hasLeft && !changeBtn) {
+        changeBtn = document.createElement('div');
+        changeBtn.className = 'change-clip-btn';
+        changeBtn.innerHTML = '↻';
+        changeBtn.onclick = e => { e.stopPropagation(); const p = document.getElementById("popup-overlay"); p.dataset.clipSide = 'left'; p.style.display = "flex"; };
+        cadre.appendChild(changeBtn);
+    }
+    if (hasLeft && changeBtn) {
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile) {
+            setTimeout(() => {
+                const wClip = clipElement ? (clipElement.offsetWidth || (imgSupport.offsetHeight * 0.4) * 0.7) : 40;
+                changeBtn.style.left = (-wClip - 12 - 36 - 8) + "px";
+            }, 0);
+        } else {
+            changeBtn.style.left = (-largeurPerlePx(clipOffsetCm) - 44) + "px";
+        }
+    }
+
+    let delBtn = cadre.querySelector('.delete-right-clip-btn');
+    if (hasRight && !delBtn) {
+        delBtn = document.createElement('div');
+        delBtn.className = 'delete-right-clip-btn';
+        delBtn.innerHTML = '✖';
+        delBtn.onclick = e => {
+            e.stopPropagation();
+            if (window.clipDroitElement) { window.clipDroitElement.remove(); window.clipDroitElement = null; currentRightClipPrice = 0; }
+            delBtn.remove();
+            document.getElementById('add-right-clip-btn').style.display = '';
+            majIndicateur();
+        };
+        cadre.appendChild(delBtn);
+    }
+    if (hasRight && delBtn) {
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile) {
+            setTimeout(() => {
+                const wClip = window.clipDroitElement ? (window.clipDroitElement.offsetWidth || (imgSupport.offsetHeight * 0.4) * 0.7) : 40;
+                delBtn.style.left = (cadre.offsetWidth + wClip + 8) + "px";
+            }, 0);
+        } else {
+            delBtn.style.left = (cadre.offsetWidth + largeurPerlePx(clipTailleCm) + 8) + "px";
+        }
+    }
+}
+
+function ajouterClip(src, prix) {
+    const popup = document.getElementById("popup-overlay");
+    const side = popup.dataset.clipSide || "left";
+    popup.style.display = "none";
+
+    if (side === "right") {
+        document.getElementById('add-right-clip-btn').style.display = 'none';
+        if (!window.clipDroitElement) {
+            window.clipDroitElement = document.createElement("img");
+            window.clipDroitElement.className = "clip-fixe";
+            cadre.appendChild(window.clipDroitElement);
+        }
+        window.clipDroitElement.src = src;
+        currentRightClipPrice = prix;
+        window.clipDroitElement.style.transform = "translateY(-50%) scaleX(-1)";
+    } else {
+        if (!clipElement) {
+            clipElement = document.createElement("img");
+            clipElement.className = "clip-fixe";
+            cadre.appendChild(clipElement);
+        }
+        clipElement.src = src;
+        currentLeftClipPrice = prix;
+        clipElement.style.transform = "translateY(-50%)";
+    }
+    ajusterCadre();
+    majIndicateur();
+}
+
+/* ===== CADRE ===== */
+function ajusterCadre() {
+    const w = imgSupport.offsetWidth, h = imgSupport.offsetHeight;
+    if (w === 0) return;
+
+    const ratioX = w / imgSupport.naturalWidth;
+    const ratioY = h / imgSupport.naturalHeight;
+
+    cadre.style.width  = (largeurFentePxBase * ratioX * facteurLargeur) + "px";
+    cadre.style.height = (hauteurFentePxBase * ratioY * facteurLargeur) + "px";
+    cadre.style.left   = (w / 2 - 8) + "px";
+    cadre.style.top    = (h / 2) + "px";
+
+    const isMobile = window.innerWidth <= 768;
+
+    if (clipElement) {
+        if (isMobile) {
+            const maxH = h * 0.4;
+            clipElement.style.height = maxH + "px";
+            clipElement.style.width = "auto";
+            setTimeout(() => {
+                const wClip = clipElement.offsetWidth || maxH * 0.7;
+                clipElement.style.left = (-wClip - 12) + "px";
+            }, 0);
+        } else {
+            const wClip = largeurPerlePx(clipTailleCm);
+            const offsetPx = largeurPerlePx(clipOffsetCm);
+            clipElement.style.width = wClip + "px";
+            clipElement.style.height = "auto";
+            clipElement.style.left = (-offsetPx) + "px";
+        }
+    }
+
+    if (window.clipDroitElement) {
+        if (isMobile) {
+            const maxH = h * 0.4;
+            window.clipDroitElement.style.height = maxH + "px";
+            window.clipDroitElement.style.width = "auto";
+            window.clipDroitElement.style.left = cadre.offsetWidth + "px";
+        } else {
+            const wClip = largeurPerlePx(clipTailleCm);
+            window.clipDroitElement.style.width = wClip + "px";
+            window.clipDroitElement.style.height = "auto";
+            window.clipDroitElement.style.left = cadre.offsetWidth + "px";
+        }
+    }
+
+    upsertButtons(!!clipElement, !!window.clipDroitElement);
+
+    let pxParCm = (cadre.offsetWidth || largeurFentePxBase * facteurLargeur) / largeurFenteReelleCm;
+    if (!pxParCm || pxParCm <= 0) return;
+    if (isMobile) pxParCm *= 1.8;
+
+    document.querySelectorAll('.submenu .img-container img').forEach(img => {
+        if (img.dataset.taille) {
+            const s = parseFloat(img.dataset.taille) * pxParCm;
+            const cat = img.dataset.cat || '';
+            const nom = img.dataset.nom || '';
+            img.style.width = s + 'px';
+            if (nom === 'plate' || cat === 'perle-plate') {
+                img.style.height = (s * 2) + 'px';
+            } else if (cat === 'tressé' || cat === CAT_TRESSEE_ID) {
+                img.style.width = (s * 2) + 'px';
+                img.style.height = (s * 4) + 'px';
+            } else {
+                img.style.height = s + 'px';
+            }
+        }
+    });
+
+    perlesInfo.forEach(p => {
+        const { w: wp, h: hp, vw } = getDimensions(p);
+        p.domElement.style.width = wp + "px";
+        p.domElement.style.height = hp + "px";
+        p.domElement.style.top = ((cadre.offsetHeight - hp) / 2) + "px";
+        const img = p.domElement.querySelector('img');
+        if (img) appliquerStyleImage(img, wp, hp, vw, p.miroir);
+    });
+
+    repositionnerPerles();
+}
+
+/* ===== RESET & TÉLÉCHARGEMENT ===== */
+function resetPerles() { perlesInfo.forEach(p => p.domElement.remove()); perlesInfo = []; majIndicateur(); }
+
+function telechargerImage() {
+    const els = document.querySelectorAll('.delete-btn,.rotate-btn,.change-clip-btn,.delete-right-clip-btn,.disclaimer-text,#add-right-clip-btn');
+    els.forEach(e => e.style.visibility = 'hidden');
+    html2canvas(document.getElementById('support'), { useCORS: true, allowTaint: true, backgroundColor: null, scale: 2 })
+        .then(canvas => { const a = document.createElement('a'); a.download = 'mon-attache-doudou.png'; a.href = canvas.toDataURL("image/png"); a.click(); els.forEach(e => e.style.visibility = 'visible'); })
+        .catch(() => { showStatus("Erreur téléchargement"); els.forEach(e => e.style.visibility = 'visible'); });
+}
+
+/* ===== PAYER ===== */
+document.getElementById("btn-payer").addEventListener("click", function() {
+    const idProduit = "9ae27b1a-0aab-d730-b466-8d3a349e703c";
+    if (!clipElement) {
+        showStatus("Veuillez sélectionner un clip gauche.");
+        const p = document.getElementById("popup-overlay"); p.dataset.clipSide = 'left'; p.style.display = "flex";
+        return;
+    }
+    if (!window.clipDroitElement) {
+        showStatus("Sélectionnez un clip droit !");
+        setTimeout(() => { const p = document.getElementById('popup-overlay'); p.dataset.clipSide = 'right'; p.style.display = 'flex'; }, 1000);
+        return;
+    }
+
+    let total = Math.round((perlesInfo.reduce((t, p) => t + (p.prixBonus || 0), 0) + currentLeftClipPrice + currentRightClipPrice) * 100) / 100;
+    let nomOption = total === 0 ? "+0€" : "+" + total + "€";
+
+    let config = [];
+    config.push({ src: clipElement.src, name: "Clip Gauche", id: 0, miroir: false, prixBonus: currentLeftClipPrice, categoryId: "clip" });
+    perlesInfo.forEach((p, i) => {
+        const c = (p.categoryId || "").replace(/_/g, ' ');
+        config.push({ src: p.src, name: c.charAt(0).toUpperCase() + c.slice(1) + " " + p.nom, id: i + 1, miroir: p.miroir, tailleCm: p.tailleCm, prixBonus: p.prixBonus, categoryId: p.categoryId });
+    });
+    config.push({ src: window.clipDroitElement.src, name: "Clip Droit", id: 999, miroir: true, prixBonus: currentRightClipPrice, categoryId: "clip" });
+
+    window.parent.postMessage({ source: "creamargow-simulateur", productId: idProduit, choixOption: nomOption, supplement: total, listeImages: config }, "*");
+    showStatus("Ajouté au panier !");
+});
+
+document.getElementById('add-right-clip-btn').addEventListener('click', () => {
+    const p = document.getElementById('popup-overlay');
+    p.dataset.clipSide = 'right';
+    p.style.display = 'flex';
+});
+
+/* ===== INIT ===== */
+async function init() {
+    if (!imgSupport.complete || imgSupport.naturalWidth === 0) await new Promise(r => imgSupport.onload = r);
+    ajusterCadre();
+    await chargerDonneesAPI();
+}
+if (document.readyState === 'complete') init();
+else window.addEventListener('load', init, { once: true });
+window.addEventListener("resize", ajusterCadre);
+window.addEventListener('orientationchange', () => setTimeout(ajusterCadre, 150));
+</script>
+</body>
+</html>
